@@ -23,7 +23,7 @@ export default class CustomSideBarMenu extends Component{
         quality: 1,
      });
      console.log(uri);
-     if (!cancelled) {this. updateProfilePicture(uri);}
+     this.uploadImage(uri, this.state.userId); }
    }
 
   uploadImage = async (uri,imageName) => {
@@ -44,12 +44,6 @@ export default class CustomSideBarMenu extends Component{
      this.setState({image:"#"})
    })
   }
-
-   updateProfilePicture=(uri)=>{
-     db.collection('users').doc(this.state.docId).update({
-       image : uri
-     })
-   }
 
    getUserProfile(){
      db.collection('users')
